@@ -1,0 +1,10 @@
+# Directories
+./.tmp
+./.vscode
+./bin
+./theme
+
+# Files
+./dc
+./docker-compose.yml
+./Dockerfile

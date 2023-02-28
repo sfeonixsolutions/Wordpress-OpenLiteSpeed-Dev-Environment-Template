@@ -1,0 +1,5 @@
+#!/bin/bash
+# if writing docker compose is too much, use ./dc in this directory
+
+env UID=${UID} GID=${GID} docker compose --compatibility $@
+

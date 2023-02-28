@@ -1,0 +1,47 @@
+version: "3.7"
+
+services:
+  # Wordpress
+  wordpress.server:
+    image: ls-wp61-php81:1.0.0
+    volumes:
+      - $PWD/theme:/var/www/vhosts/localhost/html/wp-content/themes/example.com:ro
+      - $PWD/composer.json:/var/www/vhosts/localhost/html/composer.json:ro
+      - $PWD/composer.lock:/var/www/vhosts/localhost/html/composer.lock:rw
+      - $PWD/config/wp-config.dev.php:/var/www/vhosts/localhost/html/wp-config.php:rw
+    ports:
+      - 13080:80
+    build: .
+    working_dir: /var/www/vhosts/localhost/html
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    depends_on:
+      - mysql.server
+
+  # Database
+  mysql.server:
+    image: mysql:8.0
+    restart: on-failure
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=example.com
+      - MYSQL_USER=wordpress
+      - MYSQL_PASSWORD=wordpress
+    volumes:
+      - $PWD/.tmp/mysql:/var/lib/mysql:rw
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    command: "--innodb_use_native_aio=0"
+
+  # Adminer - Mysql Admin
+  adminer.server:
+    image: adminer:4
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      ADMINER_DEFAULT_SERVER: mysql.server
+      ADMINER_DESIGN: nette
+    depends_on:
+      - mysql.server
+    ports:
+      - 13081:8080
