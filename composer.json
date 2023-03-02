@@ -1,33 +1,9 @@
 {
     "name": "example.com/wordpress-app",
+    "version": "2.0",
     "config": {
-        "allow-plugins": {
-            "fancyguy/webroot-installer": true
-        }
+        "allow-plugins": {}
     },
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "wordpress/wordpress",
-                "type": "webroot",
-                "version": "6.1",
-                "dist": {
-                    "type": "zip",
-                    "url": "https://github.com/WordPress/WordPress/archive/6.1.zip"
-                },
-                "require" : {
-                    "fancyguy/webroot-installer": "^1.1.0"
-                }
-            }
-        }
-    ],
-    "require": {
-        "wordpress/wordpress": "^6.1",
-        "fancyguy/webroot-installer": "^1.1.0"
-    },
-    "extra": {
-        "webroot-dir": ".",
-        "webroot-package": "wordpress/wordpress"
-    }
+    "require": {},
+    "extra": {}
 }

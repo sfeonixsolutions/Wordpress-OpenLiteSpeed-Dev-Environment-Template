@@ -3,6 +3,7 @@
 ./.vscode
 ./bin
 ./theme
+./plugins
 
 # Files
 ./dc

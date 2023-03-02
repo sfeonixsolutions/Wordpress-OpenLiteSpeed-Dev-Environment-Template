@@ -3,9 +3,10 @@ version: "3.7"
 services:
   # Wordpress
   wordpress.server:
-    image: ls-wp61-php81:1.0.0
+    image: ls-wp61-php81:2.0.0
     volumes:
       - $PWD/theme:/var/www/vhosts/localhost/html/wp-content/themes/example.com:ro
+      - $PWD/plugins/build/custom-blocks:/var/www/vhosts/localhost/html/wp-content/plugins/custom-blocks:ro
       - $PWD/composer.json:/var/www/vhosts/localhost/html/composer.json:ro
       - $PWD/composer.lock:/var/www/vhosts/localhost/html/composer.lock:rw
       - $PWD/config/wp-config.dev.php:/var/www/vhosts/localhost/html/wp-config.php:rw

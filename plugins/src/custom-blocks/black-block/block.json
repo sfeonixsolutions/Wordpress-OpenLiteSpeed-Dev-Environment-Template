@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "custom-blocks/black-block",
+	"version": "0.1.0",
+	"title": "Black Block",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Example block with black background!",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "custom-blocks",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}
