@@ -1,0 +1,15 @@
+# Global parameter defaults
+path: .
+url: example.com
+user: admin
+color: true
+
+# Subcommand defaults (e.g. `wp config create`)
+config create:
+  dbuser: root
+  dbpass: root
+  dbhost: mysql.server
+  dbname: example.com
+
+apache_modules:
+  - mod_rewrite

@@ -1,6 +1,6 @@
 {
 	"name": "wordpress-ols-dev-env-template",
-	"version": "2.0.0",
+	"version": "2.2.0",
 	"description": "Wordpress container with Docker & OpenLiteSpeed",
 	"author": "Satin",
 	"license": "GPL-2.0-or-later",

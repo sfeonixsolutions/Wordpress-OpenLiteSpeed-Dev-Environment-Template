@@ -19,8 +19,12 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 
 
 WORKDIR /var/www/vhosts/localhost/html
-COPY composer.json composer.lock entrypoint.sh ./
+COPY composer.json \
+    composer.lock \
+    wp-cli*.yml\
+    ./
+COPY bin ./bin
 RUN wp core download --allow-root
 
-ENTRYPOINT [ "/var/www/vhosts/localhost/html/entrypoint.sh" ]
+ENTRYPOINT [ "/var/www/vhosts/localhost/html/bin/entrypoint" ]
 

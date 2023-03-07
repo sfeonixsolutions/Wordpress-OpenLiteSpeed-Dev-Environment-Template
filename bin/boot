@@ -1,0 +1,35 @@
+#!/bin/bash
+
+execute () {
+  echo ">> $1"
+  $1
+}
+
+echo "
+┬╔═╗┌─┐┌─┐┌─┐┌┐┌┬─┐ ┬         
+│╚═╗├┤ ├┤ │ │││││┌┴┬┘         
+o╚═╝└  └─┘└─┘┘└┘┴┴ └─         
+    ╔═╗┌─┐┬  ┬ ┬┌┬┐┬┌─┐┌┐┌┌─┐┬
+    ╚═╗│ ││  │ │ │ ││ ││││└─┐│
+    ╚═╝└─┘┴─┘└─┘ ┴ ┴└─┘┘└┘└─┘o"
+
+echo "Waiting for mysql.server to be online!!"
+while true; do
+  printf "."
+  mysql -hmysql.server -uroot -proot -e "SELECT 1+1 as result" &> /dev/null && break
+  sleep 0.5
+done
+
+execute "wp config create --allow-root"
+
+execute "wp core install --allow-root\
+  --title=Example\
+  --admin_user=admin\
+  --admin_password=admin\
+  --admin_email=admin@example.com"
+
+execute "wp rewrite structure %postname%/ --allow-root"
+
+execute "wp rewrite flush --hard --allow-root"
+
+execute "composer install"
