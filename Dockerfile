@@ -24,7 +24,7 @@ COPY composer.json \
     wp-cli*.yml\
     ./
 COPY bin ./bin
-RUN wp core download --allow-root
+RUN wp core download --version=6.1 --allow-root
 
 ENTRYPOINT [ "/var/www/vhosts/localhost/html/bin/entrypoint" ]
 
